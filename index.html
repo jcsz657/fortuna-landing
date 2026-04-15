@@ -1,0 +1,1925 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Fortuna — Miel Artesanal de Puente Nacional, Santander</title>
+  <meta name="description" content="Miel artesanal multifloral de Puente Nacional, Santander. Sin procesar, sin mezclas. Del panal a tu mesa. Domicilio en Mosquera, Funza y Madrid." />
+
+  <!-- OG TAGS — reemplazar og:image con URL de foto real cuando esté disponible -->
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Fortuna — Miel Artesanal de Puente Nacional" />
+  <meta property="og:description" content="Miel multifloral sin procesar, directo del apiario a tu mesa. Domicilio en Sabana Occidente." />
+  <meta property="og:image" content="https://via.placeholder.com/1200x630/F5F0E8/C8860A?text=Fortuna+Miel+Artesanal" />
+  <meta name="twitter:card" content="summary_large_image" />
+
+  <!-- FAVICON inline SVG como data URI -->
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' fill='%232C1A0E'/><text x='16' y='23' text-anchor='middle' font-family='serif' font-size='20' fill='%23C8860A'>F</text></svg>" />
+
+  <!-- GOOGLE ANALYTICS — reemplazar G-XXXXXXXXXX con tu ID real -->
+  <!-- <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
+  <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}gtag('js',new Date());gtag('config','G-XXXXXXXXXX');</script> -->
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet" />
+
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --cream:  #F5F0E8;
+      --brown:  #2C1A0E;
+      --amber:  #C8860A;
+      --terra:  #8B4513;
+      --white:  #FFFFFF;
+      --light:  #FAF7F2;
+      --muted:  #7A6550;
+      --green:  #3D7A4A;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'DM Sans', sans-serif;
+      background: var(--cream);
+      color: var(--brown);
+      font-size: 16px;
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+      overflow-x: hidden;
+    }
+
+    /* ── TEXTURA DE GRANO GLOBAL ── */
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      z-index: 9999;
+      opacity: 0.025;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+      background-size: 200px 200px;
+    }
+
+    /* ── ANIMACIONES DE SCROLL ── */
+    .reveal {
+      opacity: 0;
+      transform: translateY(28px);
+      transition: opacity 0.7s cubic-bezier(0.22,1,0.36,1), transform 0.7s cubic-bezier(0.22,1,0.36,1);
+    }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+    .reveal-delay-1 { transition-delay: 0.1s; }
+    .reveal-delay-2 { transition-delay: 0.2s; }
+    .reveal-delay-3 { transition-delay: 0.3s; }
+    .reveal-delay-4 { transition-delay: 0.4s; }
+
+    /* ── NAV ── */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1.25rem 2.5rem;
+      background: rgba(245, 240, 232, 0.75);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border-bottom: 1px solid rgba(44, 26, 14, 0.06);
+      transition: padding 0.3s ease-out, background 0.3s ease-out, box-shadow 0.3s ease-out;
+    }
+    nav.scrolled {
+      padding: 0.75rem 2.5rem;
+      background: rgba(245, 240, 232, 0.92);
+      box-shadow: 0 1px 24px rgba(44, 26, 14, 0.07);
+    }
+
+    .nav-logo {
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      flex-shrink: 0;
+    }
+    .nav-logo img {
+      height: clamp(32px, 4vw, 44px);
+      width: auto;
+      display: block;
+      object-fit: contain;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 2rem;
+      list-style: none;
+    }
+    .nav-links a {
+      font-size: 0.8rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--muted);
+      text-decoration: none;
+      transition: color 0.2s;
+      position: relative;
+      padding-bottom: 2px;
+    }
+    .nav-links a::after {
+      content: '';
+      position: absolute;
+      bottom: 0; left: 0;
+      width: 0; height: 1px;
+      background: var(--amber);
+      transition: width 0.25s ease-out;
+    }
+    .nav-links a:hover { color: var(--brown); }
+    .nav-links a:hover::after,
+    .nav-links a.active::after { width: 100%; }
+    .nav-links a.active { color: var(--brown); }
+
+    .nav-cta {
+      background: var(--brown) !important;
+      color: var(--cream) !important;
+      padding: 0.5rem 1.25rem;
+      font-size: 0.75rem !important;
+      letter-spacing: 0.12em !important;
+    }
+    .nav-cta::after { display: none !important; }
+
+    /* ── HAMBURGER ── */
+    .nav-hamburger {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: 4px;
+    }
+    .nav-hamburger span {
+      display: block;
+      width: 22px;
+      height: 1.5px;
+      background: var(--brown);
+      transition: all 0.25s;
+    }
+    .nav-hamburger.open span:nth-child(1) { transform: translateY(6.5px) rotate(45deg); }
+    .nav-hamburger.open span:nth-child(2) { opacity: 0; }
+    .nav-hamburger.open span:nth-child(3) { transform: translateY(-6.5px) rotate(-45deg); }
+
+    .nav-mobile {
+      display: none;
+      position: fixed;
+      top: 56px; left: 0; right: 0;
+      background: rgba(245, 240, 232, 0.97);
+      backdrop-filter: blur(8px);
+      border-bottom: 1px solid rgba(44,26,14,0.08);
+      padding: 1.5rem 2rem;
+      flex-direction: column;
+      gap: 1.25rem;
+      z-index: 99;
+    }
+    .nav-mobile.open { display: flex; }
+    .nav-mobile a {
+      font-size: 0.85rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--muted);
+      text-decoration: none;
+    }
+    .nav-mobile a.nav-cta {
+      background: var(--brown);
+      color: var(--cream);
+      padding: 0.75rem 1.25rem;
+      text-align: center;
+    }
+
+    /* ── SCROLL OFFSET ── */
+    section[id] { scroll-margin-top: 72px; }
+
+    /* ── HERO ── */
+    .hero {
+      min-height: 88vh;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      padding-top: 5rem;
+      opacity: 0;
+      animation: heroFade 1s cubic-bezier(0.22,1,0.36,1) 0.2s forwards;
+    }
+    @keyframes heroFade {
+      to { opacity: 1; }
+    }
+
+    .hero-content {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: 4rem 3rem 4rem 5rem;
+    }
+
+    .hero-tag {
+      font-size: 0.7rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--amber);
+      margin-bottom: 1.5rem;
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+    }
+    .hero-tag::before {
+      content: '';
+      display: block;
+      width: 2rem;
+      height: 1px;
+      background: var(--amber);
+    }
+
+    .hero-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(3rem, 5vw, 5rem);
+      font-weight: 600;
+      line-height: 1.1;
+      color: var(--brown);
+      margin-bottom: 1.5rem;
+      text-shadow: 0 2px 24px rgba(44, 26, 14, 0.08);
+    }
+    .hero-title em { font-style: italic; color: var(--amber); }
+
+    .hero-desc {
+      font-size: 1rem;
+      color: var(--muted);
+      max-width: 380px;
+      line-height: 1.75;
+      margin-bottom: 0;
+      font-weight: 300;
+    }
+
+    .hero-divider {
+      width: 3rem;
+      height: 1px;
+      background: var(--amber);
+      margin: 1.5rem 0 2rem;
+      opacity: 0.7;
+    }
+
+    .hero-actions {
+      display: flex;
+      align-items: center;
+      gap: 1.5rem;
+      flex-wrap: wrap;
+    }
+
+    .btn-primary {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.6rem;
+      background: var(--brown);
+      color: var(--cream);
+      padding: 0.9rem 2rem;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.8rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      text-decoration: none;
+      transition: background 0.25s ease-out, transform 0.2s ease-out;
+    }
+    .btn-primary:hover { background: var(--terra); transform: translateY(-2px); }
+
+    .btn-secondary {
+      font-size: 0.8rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--muted);
+      text-decoration: none;
+      border-bottom: 1px solid var(--muted);
+      padding-bottom: 1px;
+      transition: color 0.2s, border-color 0.2s;
+    }
+    .btn-secondary:hover { color: var(--brown); border-color: var(--brown); }
+
+    .hero-visual {
+      position: relative;
+      background: var(--light);
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 520px;
+      max-height: 80vh;
+      margin: 2rem 2rem 2rem 0;
+    }
+    .hero-visual img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center 30%;
+      display: block;
+      position: absolute;
+      inset: 0;
+    }
+    .hero-visual::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to top, rgba(44,26,14,0.45) 0%, transparent 50%);
+      pointer-events: none;
+      z-index: 1;
+    }
+    .hero-origin { z-index: 2; color: rgba(245,240,232,0.8); }
+    .scroll-hint { z-index: 2; color: rgba(245,240,232,0.7); }
+
+    .hero-circle {
+      position: absolute;
+      width: 380px; height: 380px;
+      border-radius: 50%;
+      background: rgba(200, 134, 10, 0.07);
+      z-index: 1;
+      animation: pulse 4s ease-in-out infinite;
+    }
+    @keyframes pulse {
+      0%, 100% { transform: scale(1); opacity: 1; }
+      50% { transform: scale(1.05); opacity: 0.7; }
+    }
+
+    .jar-svg { filter: drop-shadow(0 20px 40px rgba(44,26,14,0.12)); position: relative; z-index: 2; }
+
+    .hero-origin {
+      position: absolute;
+      bottom: 2.5rem; left: 2rem;
+      font-size: 0.7rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--muted);
+      writing-mode: vertical-rl;
+      transform: rotate(180deg);
+      z-index: 3;
+    }
+
+    /* Indicador de scroll */
+    .scroll-hint {
+      position: absolute;
+      bottom: 2rem;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.4rem;
+      font-size: 0.6rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--muted);
+      animation: bounce 2s ease-in-out infinite;
+      cursor: pointer;
+      z-index: 3;
+    }
+    .scroll-hint svg { opacity: 0.5; }
+    @keyframes bounce {
+      0%, 100% { transform: translateX(-50%) translateY(0); }
+      50% { transform: translateX(-50%) translateY(6px); }
+    }
+
+    /* ── BANDA DE DATOS ── */
+    .band {
+      background: var(--brown);
+      color: var(--cream);
+      padding: 2rem 6rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 2rem;
+      position: relative;
+      overflow: hidden;
+    }
+    .band::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='28' height='32'%3E%3Cpolygon points='14,2 26,8 26,24 14,30 2,24 2,8' fill='none' stroke='%23F5F0E8' stroke-width='0.6'/%3E%3C/svg%3E");
+      background-size: 28px 32px;
+      opacity: 0.06;
+      pointer-events: none;
+    }
+    .band-item { text-align: center; }
+    .band-number {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 2.5rem;
+      font-weight: 300;
+      color: var(--amber);
+      display: block;
+      line-height: 1;
+    }
+    .band-label {
+      font-size: 0.7rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: rgba(245, 240, 232, 0.6);
+      margin-top: 0.4rem;
+      display: block;
+    }
+    .band-divider {
+      width: 1px; height: 3rem;
+      background: rgba(245, 240, 232, 0.15);
+    }
+
+    /* ── SECCIONES ── */
+    .section { padding: 5rem 6rem; }
+    .section-header { margin-bottom: 4rem; }
+    .section-tag {
+      font-size: 0.7rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--amber);
+      margin-bottom: 0.75rem;
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+    }
+    .section-tag::before {
+      content: '';
+      display: block;
+      width: 1.5rem;
+      height: 1px;
+      background: var(--amber);
+    }
+    .section-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(2rem, 3.5vw, 3rem);
+      font-weight: 300;
+      line-height: 1.2;
+    }
+
+    /* ── BADGE TEMPORADA ── */
+    .badge-temporada {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      font-size: 0.65rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      padding: 0.3rem 0.75rem;
+      margin-bottom: 0.75rem;
+    }
+    .badge-temporada.disponible {
+      background: rgba(61, 122, 74, 0.1);
+      color: var(--green);
+      border: 1px solid rgba(61, 122, 74, 0.25);
+    }
+    .badge-temporada.agotado {
+      background: rgba(139, 69, 19, 0.08);
+      color: var(--terra);
+      border: 1px solid rgba(139, 69, 19, 0.2);
+    }
+    .badge-dot {
+      width: 6px; height: 6px;
+      border-radius: 50%;
+      background: currentColor;
+      animation: blink 2s ease-in-out infinite;
+    }
+    .badge-temporada.agotado .badge-dot { animation: none; }
+    @keyframes blink {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.3; }
+    }
+
+    /* ── PRODUCTOS ── */
+    .products-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem;
+    }
+
+    .product-card {
+      background: var(--light);
+      padding: 2.5rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.85rem;
+      transition: background 0.25s ease-out, transform 0.25s ease-out, box-shadow 0.25s ease-out;
+      box-shadow: 0 2px 8px rgba(44,26,14,0.06), 0 8px 32px rgba(44,26,14,0.04);
+    }
+    .product-card:hover {
+      background: #EDE8DF;
+      transform: translateY(-6px);
+      box-shadow: 0 4px 16px rgba(44,26,14,0.10), 0 16px 48px rgba(44,26,14,0.08);
+    }
+    .product-card.featured { background: var(--brown); color: var(--cream); box-shadow: 0 2px 8px rgba(44,26,14,0.18), 0 8px 32px rgba(44,26,14,0.14); }
+    .product-card.featured:hover { background: #3D2516; box-shadow: 0 4px 16px rgba(44,26,14,0.24), 0 16px 48px rgba(44,26,14,0.20); }
+
+    .product-visual {
+      width: 100%;
+      aspect-ratio: 16/9;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: rgba(200, 134, 10, 0.06);
+      margin-bottom: 0.5rem;
+    }
+    .product-card.featured .product-visual { background: rgba(200, 134, 10, 0.1); }
+
+    .product-tag-small {
+      font-size: 0.65rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--amber);
+    }
+    .product-name {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.75rem;
+      font-weight: 400;
+      line-height: 1.2;
+    }
+    .product-card.featured .product-name { color: var(--cream); }
+    .product-desc {
+      font-size: 0.875rem;
+      color: var(--muted);
+      font-weight: 300;
+      line-height: 1.7;
+    }
+    .product-card.featured .product-desc { color: rgba(245, 240, 232, 0.65); }
+
+    /* Carrito por producto */
+    .product-qty {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      margin-top: 0.5rem;
+    }
+    .qty-btn {
+      width: 32px; height: 32px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: none;
+      border: 1px solid rgba(44, 26, 14, 0.2);
+      color: var(--brown);
+      font-size: 1.1rem;
+      cursor: pointer;
+      transition: background 0.15s, color 0.15s;
+      line-height: 1;
+      font-family: 'DM Sans', sans-serif;
+    }
+    .product-card.featured .qty-btn {
+      border-color: rgba(245, 240, 232, 0.25);
+      color: var(--cream);
+    }
+    .qty-btn { transition: background 0.2s ease-out, color 0.2s ease-out, border-color 0.2s ease-out; }
+    .qty-btn:hover { background: var(--amber); color: white; border-color: var(--amber); }
+    .qty-count {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.5rem;
+      font-weight: 400;
+      min-width: 1.5rem;
+      text-align: center;
+      color: var(--brown);
+    }
+    .product-card.featured .qty-count { color: var(--amber); }
+
+    .product-footer {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-top: auto;
+      padding-top: 1.5rem;
+      border-top: 1px solid rgba(44, 26, 14, 0.1);
+    }
+    .product-card.featured .product-footer { border-top-color: rgba(245, 240, 232, 0.15); }
+
+    .product-price {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.75rem;
+      font-weight: 500;
+      color: var(--amber);
+    }
+    .product-card.featured .product-price { color: var(--amber); }
+
+    /* ── CARRITO FLOTANTE ── */
+    .cart-bar {
+      position: fixed;
+      bottom: 0; left: 0; right: 0;
+      background: var(--brown);
+      color: var(--cream);
+      padding: 1rem 2rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+      z-index: 200;
+      transform: translateY(100%);
+      transition: transform 0.35s cubic-bezier(0.22,1,0.36,1);
+    }
+    .cart-bar.visible { transform: translateY(0); }
+
+    .cart-summary {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+    }
+    .cart-icon {
+      font-size: 1.1rem;
+      opacity: 0.7;
+    }
+    .cart-text {
+      font-size: 0.85rem;
+      color: rgba(245,240,232,0.8);
+    }
+    .cart-total {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.5rem;
+      font-weight: 400;
+      color: var(--amber);
+    }
+
+    .cart-actions { display: flex; gap: 0.75rem; align-items: center; }
+
+    .btn-cart-clear {
+      background: none;
+      border: none;
+      color: rgba(245,240,232,0.4);
+      font-size: 0.7rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      cursor: pointer;
+      transition: color 0.2s;
+    }
+    .btn-cart-clear:hover { color: rgba(245,240,232,0.8); }
+
+    .btn-cart-order {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      background: #25D366;
+      color: white;
+      padding: 0.7rem 1.5rem;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.75rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      text-decoration: none;
+      border: none;
+      cursor: pointer;
+      transition: background 0.2s;
+    }
+    .btn-cart-order:hover { background: #1EBD5A; }
+
+    /* ── MODAL DE PEDIDO ── */
+    .modal-overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(44, 26, 14, 0.6);
+      z-index: 300;
+      display: flex;
+      align-items: flex-end;
+      justify-content: center;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.25s;
+    }
+    .modal-overlay.open { opacity: 1; pointer-events: all; }
+
+    .modal {
+      background: var(--cream);
+      width: 100%;
+      max-width: 520px;
+      padding: 2.5rem;
+      transform: translateY(40px);
+      transition: transform 0.3s cubic-bezier(0.22,1,0.36,1);
+      max-height: 90vh;
+      overflow-y: auto;
+    }
+    .modal-overlay.open .modal { transform: translateY(0); }
+
+    .modal-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.75rem;
+      font-weight: 400;
+      margin-bottom: 0.5rem;
+      color: var(--brown);
+    }
+    .modal-subtitle {
+      font-size: 0.8rem;
+      color: var(--muted);
+      margin-bottom: 2rem;
+      font-weight: 300;
+    }
+    .modal-resumen {
+      background: var(--light);
+      padding: 1.25rem;
+      margin-bottom: 1.5rem;
+      font-size: 0.85rem;
+      color: var(--muted);
+      line-height: 1.8;
+    }
+    .modal-resumen strong { color: var(--brown); }
+
+    .form-group { margin-bottom: 1.25rem; }
+    .form-label {
+      display: block;
+      font-size: 0.7rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 0.4rem;
+    }
+    .form-input {
+      width: 100%;
+      padding: 0.75rem 1rem;
+      border: 1px solid rgba(44, 26, 14, 0.15);
+      background: var(--white);
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.9rem;
+      color: var(--brown);
+      outline: none;
+      transition: border-color 0.2s;
+    }
+    .form-input:focus { border-color: var(--amber); }
+    .form-input.error { border-color: #c0392b; }
+
+    .form-pago {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0.5rem;
+      margin-bottom: 1.25rem;
+    }
+    .pago-opt {
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+      padding: 0.75rem 1rem;
+      border: 1px solid rgba(44, 26, 14, 0.15);
+      cursor: pointer;
+      transition: border-color 0.2s, background 0.2s;
+      font-size: 0.8rem;
+      color: var(--muted);
+      user-select: none;
+    }
+    .pago-opt input { accent-color: var(--amber); }
+    .pago-opt:has(input:checked) {
+      border-color: var(--amber);
+      background: rgba(200, 134, 10, 0.05);
+      color: var(--brown);
+    }
+
+    .modal-actions { display: flex; gap: 0.75rem; margin-top: 1.5rem; }
+
+    .btn-modal-send {
+      flex: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+      background: #25D366;
+      color: white;
+      padding: 0.9rem;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.8rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      border: none;
+      cursor: pointer;
+      transition: background 0.2s;
+    }
+    .btn-modal-send:hover { background: #1EBD5A; }
+
+    .btn-modal-cancel {
+      background: none;
+      border: 1px solid rgba(44,26,14,0.15);
+      color: var(--muted);
+      padding: 0.9rem 1.25rem;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.75rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      cursor: pointer;
+      transition: border-color 0.2s;
+    }
+    .btn-modal-cancel:hover { border-color: var(--muted); }
+
+    /* ── GALERÍA ── */
+    .gallery { padding: 5rem 6rem; background: var(--light); }
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.25rem;
+      margin-top: 2.5rem;
+    }
+    .gallery-item {
+      aspect-ratio: 4/3;
+      background: var(--cream);
+      overflow: hidden;
+      cursor: pointer;
+      position: relative;
+      border-radius: 4px;
+    }
+    .gallery-item img {
+      width: 100%; height: 100%;
+      object-fit: cover;
+      transition: transform 0.35s ease-out;
+      display: block;
+    }
+    .gallery-item:hover img { transform: scale(1.05); }
+    .gallery-placeholder {
+      width: 100%; height: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 0.75rem;
+      color: rgba(200, 134, 10, 0.35);
+    }
+    .gallery-placeholder span {
+      font-size: 0.6rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--muted);
+      opacity: 0.5;
+      text-align: center;
+      padding: 0 1rem;
+    }
+    .gallery-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to top, rgba(44,26,14,0.65) 0%, rgba(44,26,14,0.25) 60%, transparent 100%);
+      opacity: 0;
+      transition: opacity 0.3s ease-out;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .gallery-overlay svg {
+      opacity: 0.9;
+      filter: drop-shadow(0 2px 6px rgba(0,0,0,0.3));
+    }
+    .gallery-item:hover .gallery-overlay { opacity: 1; }
+
+    /* Lightbox */
+    .lightbox {
+      position: fixed;
+      inset: 0;
+      background: rgba(44, 26, 14, 0.92);
+      z-index: 400;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.2s;
+    }
+    .lightbox.open { opacity: 1; pointer-events: all; }
+    .lightbox img {
+      max-width: 90vw;
+      max-height: 85vh;
+      object-fit: contain;
+    }
+    .lightbox-close {
+      position: absolute;
+      top: 1.5rem; right: 1.5rem;
+      background: none;
+      border: none;
+      color: rgba(245,240,232,0.7);
+      font-size: 1.5rem;
+      cursor: pointer;
+      font-family: 'DM Sans', sans-serif;
+      transition: color 0.2s;
+    }
+    .lightbox-close:hover { color: var(--cream); }
+
+    /* ── ORIGEN ── */
+    .origin {
+      padding: 5rem 6rem;
+      background: var(--light);
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 4rem;
+      align-items: center;
+    }
+    .origin-visual {
+      aspect-ratio: 1;
+      background: var(--cream);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      overflow: hidden;
+    }
+    .origin-bg-text {
+      position: absolute;
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 14rem;
+      font-weight: 300;
+      color: rgba(200, 134, 10, 0.06);
+      line-height: 1;
+      user-select: none;
+      white-space: nowrap;
+    }
+    .honeycomb-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 3px;
+      padding: 2rem;
+      width: 100%;
+    }
+    .hex-cell {
+      aspect-ratio: 1;
+      background: rgba(200, 134, 10, 0.08);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 0.65rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--muted);
+      text-align: center;
+      padding: 0.5rem;
+      transition: background 0.3s;
+    }
+    .hex-cell:hover { background: rgba(200, 134, 10, 0.15); }
+    .hex-cell.accent { background: var(--amber); color: var(--cream); }
+
+    .origin-quote {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(1.5rem, 2.5vw, 2.25rem);
+      font-weight: 300;
+      font-style: italic;
+      line-height: 1.4;
+      color: var(--brown);
+      margin-bottom: 2rem;
+    }
+    .origin-text {
+      font-size: 0.9rem;
+      color: var(--muted);
+      font-weight: 300;
+      line-height: 1.85;
+      margin-bottom: 2.5rem;
+    }
+    .origin-data { display: flex; gap: 2.5rem; }
+    .origin-data-value {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 2rem;
+      font-weight: 400;
+      color: var(--amber);
+      display: block;
+      line-height: 1;
+    }
+    .origin-data-label {
+      font-size: 0.7rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-top: 0.3rem;
+      display: block;
+    }
+
+    /* ── PROCESO ── */
+    .process {
+      padding: 5rem 6rem;
+      background: var(--brown);
+      color: var(--cream);
+    }
+    .process .section-tag { color: var(--amber); }
+    .process .section-tag::before { background: var(--amber); }
+    .process .section-title { color: var(--cream); }
+    .process-steps {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1px;
+      margin-top: 4rem;
+      background: rgba(245, 240, 232, 0.08);
+    }
+    .process-step {
+      padding: 2.5rem;
+      background: var(--brown);
+      transition: background 0.25s ease-out;
+      position: relative;
+      overflow: hidden;
+    }
+    .process-step:hover { background: #3D2516; }
+    .process-step::before {
+      content: attr(data-num);
+      position: absolute;
+      bottom: -1.5rem;
+      right: 1rem;
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 5rem;
+      font-weight: 300;
+      color: var(--amber);
+      opacity: 0.12;
+      line-height: 1;
+      pointer-events: none;
+      user-select: none;
+    }
+    .step-number {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 3rem;
+      font-weight: 300;
+      color: rgba(200, 134, 10, 0.3);
+      display: block;
+      line-height: 1;
+      margin-bottom: 1.5rem;
+    }
+    .step-icon { font-size: 1.75rem; margin-bottom: 1rem; display: block; }
+    .step-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.25rem;
+      font-weight: 400;
+      color: var(--cream);
+      margin-bottom: 0.75rem;
+    }
+    .step-desc {
+      font-size: 0.8rem;
+      color: rgba(245, 240, 232, 0.5);
+      line-height: 1.7;
+      font-weight: 300;
+    }
+
+    /* ── PAGOS ── */
+    .pagos {
+      padding: 4rem 6rem;
+      background: var(--cream);
+      border-top: 1px solid rgba(44,26,14,0.06);
+    }
+    .pagos-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 2rem;
+      flex-wrap: wrap;
+    }
+    .pagos-title {
+      font-size: 0.7rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+    .pagos-methods {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+    .pago-chip {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.6rem 1.1rem;
+      border: 1px solid rgba(44,26,14,0.12);
+      font-size: 0.75rem;
+      color: var(--brown);
+      font-weight: 400;
+    }
+    .pagos-nota {
+      font-size: 0.75rem;
+      color: var(--muted);
+      font-weight: 300;
+      max-width: 320px;
+      line-height: 1.6;
+    }
+
+    /* ── TESTIMONIOS ── */
+    .testimonials { padding: 5rem 6rem; background: var(--cream); }
+    .testimonials-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2px;
+      margin-top: 4rem;
+    }
+    .testimonial-card { background: var(--light); padding: 2.5rem; }
+    .testimonial-stars {
+      color: var(--amber);
+      font-size: 0.75rem;
+      letter-spacing: 0.2em;
+      margin-bottom: 1.25rem;
+    }
+    .testimonial-text {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.1rem;
+      font-weight: 400;
+      font-style: italic;
+      color: var(--brown);
+      line-height: 1.6;
+      margin-bottom: 1.5rem;
+    }
+    .testimonial-author {
+      font-size: 0.75rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+
+    /* ── CTA FINAL ── */
+    .cta-section {
+      padding: 5rem 6rem;
+      background: var(--light);
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 1.5rem;
+    }
+    .cta-eyebrow {
+      font-size: 0.7rem;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      color: var(--amber);
+    }
+    .cta-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(2.5rem, 4vw, 4rem);
+      font-weight: 300;
+      line-height: 1.15;
+      max-width: 600px;
+    }
+    .cta-title em { font-style: italic; color: var(--amber); }
+    .cta-desc {
+      font-size: 0.9rem;
+      color: var(--muted);
+      font-weight: 300;
+      max-width: 420px;
+      line-height: 1.75;
+    }
+    .cta-buttons {
+      display: flex;
+      gap: 1rem;
+      margin-top: 1rem;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+    @keyframes wa-pulse {
+      0%, 100% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.4); }
+      50% { box-shadow: 0 0 0 10px rgba(37, 211, 102, 0); }
+    }
+    .btn-whatsapp {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.6rem;
+      background: #25D366;
+      color: white;
+      padding: 0.9rem 2rem;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.8rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      text-decoration: none;
+      transition: background 0.25s ease-out, transform 0.2s ease-out;
+      animation: wa-pulse 2.5s ease-in-out infinite;
+    }
+    .btn-whatsapp:hover { background: #1EBD5A; transform: translateY(-2px); animation: none; }
+
+    .cta-closing {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(1.1rem, 2vw, 1.4rem);
+      font-weight: 300;
+      font-style: italic;
+      color: var(--muted);
+      margin-bottom: 0.5rem;
+    }
+    .btn-instagram {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.6rem;
+      border: 1px solid var(--brown);
+      color: var(--brown);
+      padding: 0.9rem 2rem;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.8rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      text-decoration: none;
+      transition: background 0.25s ease-out, color 0.25s ease-out;
+    }
+    .btn-instagram:hover { background: var(--brown); color: var(--cream); }
+
+    /* ── FOOTER ── */
+    footer {
+      background: var(--brown);
+      color: var(--cream);
+      padding: 3rem 6rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .footer-logo {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.25rem;
+      font-weight: 500;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--cream);
+      text-decoration: none;
+    }
+    .footer-origin {
+      font-size: 0.7rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: rgba(245, 240, 232, 0.4);
+    }
+    .footer-links { display: flex; gap: 1.5rem; }
+    .footer-links a {
+      font-size: 0.7rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: rgba(245, 240, 232, 0.5);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+    .footer-links a:hover { color: var(--amber); }
+
+    /* ── RESPONSIVE — tablet ancha ── */
+    @media (max-width: 1200px) {
+      .section { padding: 5rem 3.5rem; }
+      .gallery { padding: 5rem 3.5rem; }
+      .origin { padding: 5rem 3.5rem; }
+      .process { padding: 5rem 3.5rem; }
+      .testimonials { padding: 5rem 3.5rem; }
+      .pagos { padding: 4rem 3.5rem; }
+      .cta-section { padding: 5rem 3.5rem; }
+      footer { padding: 3rem 3.5rem; }
+      .band { padding: 2rem 3.5rem; }
+      .hero-content { padding: 4rem 2.5rem 4rem 3.5rem; }
+    }
+
+    /* ── RESPONSIVE — tablet / mobile ── */
+    @media (max-width: 900px) {
+      nav { padding: 1rem 1.5rem; }
+      .nav-links { display: none; }
+      .nav-hamburger { display: flex; }
+
+      .hero { grid-template-columns: 1fr; min-height: auto; }
+      .hero-content { padding: 7rem 2rem 3rem; }
+      .hero-visual {
+        min-height: 65vw;
+        margin: 0;
+      }
+      .hero-visual img { object-position: center 40%; }
+      .hero-origin { display: none; }
+      .scroll-hint { display: none; }
+      .hero-divider { max-width: 3rem; }
+
+      .band { padding: 2rem 1.5rem; flex-wrap: wrap; gap: 0; }
+      .band-divider { display: none; }
+      .band-item {
+        width: 50%;
+        padding: 1.25rem 0.75rem;
+        border-bottom: 1px solid rgba(245,240,232,0.08);
+      }
+      .band-item:nth-child(odd) { border-right: 1px solid rgba(245,240,232,0.08); }
+
+      .section { padding: 4rem 1.5rem; }
+      .products-grid { grid-template-columns: 1fr; }
+
+      .gallery { padding: 4rem 1.5rem; }
+      .gallery-grid { grid-template-columns: repeat(2, 1fr); gap: 0.75rem; }
+
+      .origin { grid-template-columns: 1fr; padding: 4rem 1.5rem; gap: 3rem; }
+      .process { padding: 4rem 1.5rem; }
+      .process-steps { grid-template-columns: 1fr 1fr; }
+
+      .pagos { padding: 3rem 1.5rem; }
+      .pagos-inner { flex-direction: column; align-items: flex-start; }
+
+      .testimonials { padding: 4rem 1.5rem; }
+      .testimonials-grid { grid-template-columns: 1fr; }
+
+      .cta-section { padding: 5rem 1.5rem; }
+
+      footer { padding: 2rem 1.5rem; flex-direction: column; gap: 1.5rem; text-align: center; }
+      .footer-links { flex-wrap: wrap; justify-content: center; }
+
+      .cart-bar { padding: 1rem; flex-direction: column; gap: 0.75rem; }
+      .modal { padding: 1.5rem; }
+      .form-pago { grid-template-columns: 1fr; }
+    }
+
+    /* ── RESPONSIVE — móvil pequeño ── */
+    @media (max-width: 640px) {
+      .hero-content { padding: 6rem 1.25rem 2.5rem; }
+      .hero-visual { min-height: 72vw; }
+
+      .section { padding: 3.5rem 1.25rem; }
+      .section-header { margin-bottom: 2.5rem; }
+      .gallery { padding: 3.5rem 1.25rem; }
+      .gallery-grid { grid-template-columns: 1fr 1fr; gap: 0.5rem; }
+
+      .origin { padding: 3.5rem 1.25rem; }
+      .process { padding: 3.5rem 1.25rem; }
+      .process-steps { grid-template-columns: 1fr; }
+      .process-step::before { font-size: 4rem; }
+
+      .pagos { padding: 2.5rem 1.25rem; }
+      .pagos-methods { gap: 0.5rem; }
+
+      .testimonials { padding: 3.5rem 1.25rem; }
+      .testimonials-grid { gap: 0.75rem; }
+
+      .cta-section { padding: 4rem 1.25rem; gap: 1rem; }
+      .cta-buttons { flex-direction: column; align-items: stretch; }
+      .btn-whatsapp, .btn-instagram { justify-content: center; }
+
+      footer { padding: 1.75rem 1.25rem; }
+
+      .band { padding: 0; }
+      .band-item { padding: 1rem 1.25rem; }
+
+      .modal { padding: 1.25rem; }
+      .modal-title { font-size: 1.5rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav id="navbar">
+    <a href="#" class="nav-logo">
+      <img src="img/logo.png" alt="Fortuna Miel Artesanal" />
+    </a>
+    <ul class="nav-links">
+      <li><a href="#productos" data-section="productos">Productos</a></li>
+      <li><a href="#galeria" data-section="galeria">Galería</a></li>
+      <li><a href="#origen" data-section="origen">Origen</a></li>
+      <li><a href="#contacto" class="nav-cta">Pedir ahora</a></li>
+    </ul>
+    <button class="nav-hamburger" id="hamburger" aria-label="Menú" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+  </nav>
+  <div class="nav-mobile" id="nav-mobile">
+    <a href="#productos" class="nav-mobile-link">Productos</a>
+    <a href="#galeria" class="nav-mobile-link">Galería</a>
+    <a href="#origen" class="nav-mobile-link">Origen</a>
+    <a href="#contacto" class="nav-cta nav-mobile-link">Pedir ahora</a>
+  </div>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-content">
+      <span class="hero-tag">Puente Nacional, Santander</span>
+      <h1 class="hero-title">
+        Miel que<br>
+        <em>nace</em> del<br>
+        campo.
+      </h1>
+      <p class="hero-desc">
+        Cosechada despacio en nuestro apiario familiar.
+        Sin procesar, sin mezclas. Del panal directamente a tu mesa.
+      </p>
+      <div class="hero-divider"></div>
+      <div class="hero-actions">
+        <a href="#productos" class="btn-primary">Ver productos</a>
+        <a href="#origen" class="btn-secondary">Nuestra historia</a>
+      </div>
+    </div>
+
+    <div class="hero-visual">
+      <img src="img/frascos.jpg" alt="Frascos de miel Fortuna en la naturaleza" loading="eager" />
+      <span class="hero-origin">Producida en Santander · Colombia</span>
+      <div class="scroll-hint" onclick="document.getElementById('productos').scrollIntoView({behavior:'smooth'})">
+        <svg width="16" height="10" viewBox="0 0 16 10" fill="none"><path d="M1 1L8 8L15 1" stroke="currentColor" stroke-width="1.5"/></svg>
+      </div>
+    </div>
+  </section>
+
+  <!-- BANDA DE DATOS -->
+  <div class="band">
+    <div class="band-item reveal">
+      <span class="band-number" data-count="4">0</span>
+      <span class="band-label">Colmenas activas</span>
+    </div>
+    <div class="band-divider"></div>
+    <div class="band-item reveal reveal-delay-1">
+      <span class="band-number">100%</span>
+      <span class="band-label">Sin procesar</span>
+    </div>
+    <div class="band-divider"></div>
+    <div class="band-item reveal reveal-delay-2">
+      <span class="band-number">1.200 m</span>
+      <span class="band-label">Altitud de cosecha</span>
+    </div>
+    <div class="band-divider"></div>
+    <div class="band-item reveal reveal-delay-3">
+      <span class="band-number" data-count="2">0</span>
+      <span class="band-label">Presentaciones</span>
+    </div>
+  </div>
+
+  <!-- PRODUCTOS -->
+  <section class="section" id="productos">
+    <div class="section-header reveal">
+      <span class="section-tag">Lo que ofrecemos</span>
+      <h2 class="section-title">Dos tamaños,<br>la misma miel.</h2>
+    </div>
+    <div class="products-grid">
+
+      <div class="product-card featured reveal">
+        <div class="product-visual">
+          <svg width="120" height="160" viewBox="0 0 120 160" fill="none">
+            <rect x="32" y="10" width="56" height="14" rx="3" fill="rgba(245,240,232,0.3)"/>
+            <rect x="36" y="7" width="48" height="7" rx="2" fill="rgba(245,240,232,0.2)"/>
+            <path d="M28 24 Q26 28 25 36 L22 120 Q21 134 38 140 L82 140 Q99 134 98 120 L95 36 Q94 28 92 24 Z" fill="rgba(200,134,10,0.35)"/>
+            <rect x="34" y="52" width="52" height="62" rx="2" fill="rgba(245,240,232,0.12)"/>
+            <text x="60" y="76" text-anchor="middle" font-family="serif" font-size="10" fill="rgba(245,240,232,0.9)" letter-spacing="3">FORTUNA</text>
+            <text x="60" y="100" text-anchor="middle" font-family="sans-serif" font-size="6" fill="rgba(245,240,232,0.5)" letter-spacing="1">600 g</text>
+          </svg>
+        </div>
+        <div class="badge-temporada disponible">
+          <span class="badge-dot"></span>
+          Cosecha disponible
+        </div>
+        <span class="product-tag-small">Más popular</span>
+        <h3 class="product-name">Frasco Familiar<br>600 gramos</h3>
+        <p class="product-desc">Nuestra presentación principal. Miel multifloral cruda, con todo su color y aroma intacto. Disponibilidad según temporada de cosecha.</p>
+        <div class="product-qty">
+          <button class="qty-btn" onclick="changeQty('grande', -1)" aria-label="Restar">−</button>
+          <span class="qty-count" id="qty-grande">0</span>
+          <button class="qty-btn" onclick="changeQty('grande', 1)" aria-label="Sumar">+</button>
+        </div>
+        <div class="product-footer">
+          <span class="product-price">$35.000</span>
+        </div>
+      </div>
+
+      <div class="product-card reveal reveal-delay-1">
+        <div class="product-visual">
+          <svg width="90" height="130" viewBox="0 0 90 130" fill="none">
+            <rect x="24" y="8" width="42" height="11" rx="3" fill="#2C1A0E" opacity="0.4"/>
+            <rect x="27" y="5" width="36" height="6" rx="2" fill="#2C1A0E" opacity="0.25"/>
+            <path d="M20 19 Q19 22 18 28 L16 92 Q15 103 28 108 L62 108 Q75 103 74 92 L72 28 Q71 22 70 19 Z" fill="#F0C14B" opacity="0.6"/>
+            <rect x="25" y="40" width="40" height="48" rx="2" fill="white" opacity="0.75"/>
+            <text x="45" y="58" text-anchor="middle" font-family="serif" font-size="8" fill="#2C1A0E" letter-spacing="2">FORTUNA</text>
+            <text x="45" y="75" text-anchor="middle" font-family="sans-serif" font-size="5" fill="#7A6550">MULTIFLORAL</text>
+          </svg>
+        </div>
+        <div class="badge-temporada disponible">
+          <span class="badge-dot"></span>
+          Cosecha disponible
+        </div>
+        <span class="product-tag-small">Para regalar</span>
+        <h3 class="product-name">Frasco Personal</h3>
+        <p class="product-desc">Perfecta para probar, regalar o llevar. Misma calidad, formato compacto. Ideal para quien descubre Fortuna por primera vez.</p>
+        <div class="product-qty">
+          <button class="qty-btn" onclick="changeQty('pequeno', -1)" aria-label="Restar">−</button>
+          <span class="qty-count" id="qty-pequeno">0</span>
+          <button class="qty-btn" onclick="changeQty('pequeno', 1)" aria-label="Sumar">+</button>
+        </div>
+        <div class="product-footer">
+          <span class="product-price">$20.000</span>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- GALERÍA -->
+  <section class="gallery" id="galeria">
+    <div class="section-header reveal">
+      <span class="section-tag">El apiario</span>
+      <h2 class="section-title">Desde Puente<br>Nacional.</h2>
+    </div>
+    <div class="gallery-grid">
+      <!-- Slots para fotos reales — reemplazar src con tus imágenes -->
+      <div class="gallery-item reveal" data-label="Las colmenas">
+        <img src="img/colmena.jpg" alt="Colmena de Fortuna en Puente Nacional" loading="lazy" />
+        <div class="gallery-overlay"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.5"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg></div>
+      </div>
+      <div class="gallery-item reveal reveal-delay-1" data-label="Las apicultoras">
+        <img src="img/apicultoras.jpg" alt="Apicultoras de Fortuna inspeccionando el panal" loading="lazy" />
+        <div class="gallery-overlay"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.5"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg></div>
+      </div>
+      <div class="gallery-item reveal reveal-delay-2" data-label="El panal">
+        <img src="img/panal.jpg" alt="Cuadros de panal con miel de Fortuna" loading="lazy" />
+        <div class="gallery-overlay"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.5"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg></div>
+      </div>
+      <div class="gallery-item reveal reveal-delay-1" data-label="Las abejas">
+        <img src="img/abejas.jpg" alt="Abejas sobre el panal en Fortuna" loading="lazy" />
+        <div class="gallery-overlay"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.5"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg></div>
+      </div>
+      <div class="gallery-item reveal reveal-delay-2" data-label="La cosecha">
+        <img src="img/cosecha.jpg" alt="Apicultora sosteniendo cuadro de miel Fortuna" loading="lazy" />
+        <div class="gallery-overlay"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.5"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg></div>
+      </div>
+      <div class="gallery-item reveal reveal-delay-3" data-label="El entorno">
+        <img src="img/flora.jpg" alt="Flora nativa de Puente Nacional donde liban las abejas de Fortuna" loading="lazy" />
+        <div class="gallery-overlay"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.5"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- LIGHTBOX -->
+  <div class="lightbox" id="lightbox">
+    <button class="lightbox-close" id="lightbox-close">✕</button>
+    <img id="lightbox-img" src="" alt="" />
+  </div>
+
+  <!-- ORIGEN -->
+  <section class="origin" id="origen">
+    <div class="origin-visual reveal">
+      <span class="origin-bg-text">F</span>
+      <div class="honeycomb-grid">
+        <div class="hex-cell">Puente<br>Nacional</div>
+        <div class="hex-cell accent">Santander</div>
+        <div class="hex-cell">Miel<br>cruda</div>
+        <div class="hex-cell">Sin<br>procesar</div>
+        <div class="hex-cell">Flora<br>nativa</div>
+        <div class="hex-cell">Apiario<br>familiar</div>
+        <div class="hex-cell accent">4<br>colmenas</div>
+        <div class="hex-cell">1.200 m<br>altitud</div>
+        <div class="hex-cell">Cosecha<br>manual</div>
+      </div>
+    </div>
+    <div class="origin-content reveal reveal-delay-2">
+      <span class="section-tag">Nuestra historia</span>
+      <blockquote class="origin-quote">"La miel no se hace.<br>Se cuida."</blockquote>
+      <p class="origin-text">Somos un apiario familiar en Puente Nacional, Santander — un municipio rodeado de flora nativa a más de 1.200 metros de altitud. Nuestras abejas liban flores silvestres que cambian con cada temporada.</p>
+      <p class="origin-text">No mezclamos, no calentamos, no filtramos en exceso. Lo que sale del panal, llega a tu mesa. Cada frasco es distinto al anterior — eso no es un defecto. Es la prueba de que es real.</p>
+      <div class="origin-data">
+        <div class="origin-data-item">
+          <span class="origin-data-value">2 apicultoras</span>
+          <span class="origin-data-label">Detrás del proyecto</span>
+        </div>
+        <div class="origin-data-item">
+          <span class="origin-data-value">Multifloral</span>
+          <span class="origin-data-label">Variedad botánica</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROCESO -->
+  <section class="process" id="proceso">
+    <div class="section-header reveal">
+      <span class="section-tag">Cómo lo hacemos</span>
+      <h2 class="section-title" style="color:var(--cream)">Del panal<br>a tu mesa.</h2>
+    </div>
+    <div class="process-steps">
+      <div class="process-step reveal" data-num="01">
+        <span class="step-number">01</span>
+        <span class="step-icon">🌿</span>
+        <h3 class="step-title">Las abejas liban</h3>
+        <p class="step-desc">Nuestras colmenas en Puente Nacional están rodeadas de flora nativa. Las abejas recolectan néctar de flores silvestres cada día.</p>
+      </div>
+      <div class="process-step reveal reveal-delay-1" data-num="02">
+        <span class="step-number">02</span>
+        <span class="step-icon">🍯</span>
+        <h3 class="step-title">Cosecha manual</h3>
+        <p class="step-desc">Revisamos los cuadros a mano. Solo cosechamos cuando la miel está completamente operculada — sellada por las propias abejas.</p>
+      </div>
+      <div class="process-step reveal reveal-delay-2" data-num="03">
+        <span class="step-number">03</span>
+        <span class="step-icon">✦</span>
+        <h3 class="step-title">Sin procesar</h3>
+        <p class="step-desc">No pasteurizamos ni calentamos. La miel pasa del panal al frasco con filtrado mínimo para conservar enzimas y antioxidantes.</p>
+      </div>
+      <div class="process-step reveal reveal-delay-3" data-num="04">
+        <span class="step-number">04</span>
+        <span class="step-icon">📦</span>
+        <h3 class="step-title">A tu puerta</h3>
+        <p class="step-desc">Envasado a mano. Domicilio en Mosquera, Funza y Madrid. Pedido por WhatsApp, entrega en 24–48 horas.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- MÉTODOS DE PAGO -->
+  <div class="pagos reveal">
+    <div class="pagos-inner">
+      <span class="pagos-title">Métodos de pago</span>
+      <div class="pagos-methods">
+        <div class="pago-chip">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="5" width="20" height="14" rx="2"/><line x1="2" y1="10" x2="22" y2="10"/></svg>
+          Nequi
+        </div>
+        <div class="pago-chip">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="5" width="20" height="14" rx="2"/><line x1="2" y1="10" x2="22" y2="10"/></svg>
+          Daviplata
+        </div>
+        <div class="pago-chip">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 2L2 7l10 5 10-5-10-5z"/><polyline points="2 17 12 22 22 17"/><polyline points="2 12 12 17 22 12"/></svg>
+          Contraentrega
+        </div>
+        <div class="pago-chip">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="5" width="20" height="14" rx="2"/><line x1="2" y1="10" x2="22" y2="10"/></svg>
+          Transferencia
+        </div>
+      </div>
+      <p class="pagos-nota">Pago contraentrega disponible en Mosquera, Funza y Madrid. Transferencia o Nequi para pedidos fuera de la zona.</p>
+    </div>
+  </div>
+
+  <!-- TESTIMONIOS -->
+  <section class="testimonials">
+    <div class="section-header reveal">
+      <span class="section-tag">Lo que dicen</span>
+      <h2 class="section-title">Quienes ya<br>la prueban, vuelven.</h2>
+    </div>
+    <div class="testimonials-grid">
+      <div class="testimonial-card reveal">
+        <div class="testimonial-stars">★ ★ ★ ★ ★</div>
+        <p class="testimonial-text">"Nunca había probado miel así. Tiene un sabor completamente distinto a lo del supermercado. Se nota que es real."</p>
+        <span class="testimonial-author">— Daniela M., Mosquera</span>
+      </div>
+      <div class="testimonial-card reveal reveal-delay-1">
+        <div class="testimonial-stars">★ ★ ★ ★ ★</div>
+        <p class="testimonial-text">"La pedí para regalar y terminé comprando dos para mí. La presentación es bonita y la miel es increíble."</p>
+        <span class="testimonial-author">— Carlos R., Bogotá</span>
+      </div>
+      <div class="testimonial-card reveal reveal-delay-2">
+        <div class="testimonial-stars">★ ★ ★ ★ ★</div>
+        <p class="testimonial-text">"El domicilio llegó rapidísimo y bien empacado. El sabor es suave, floral, nada empalagoso. Ya pedí el segundo."</p>
+        <span class="testimonial-author">— María P., Funza</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA FINAL -->
+  <section class="cta-section" id="contacto">
+    <span class="cta-eyebrow reveal">Pide tu frasco hoy</span>
+    <h2 class="cta-title reveal">La <em>mejor miel</em><br>que has probado,<br>o te devolvemos tu plata.</h2>
+    <p class="cta-desc reveal">Domicilio en Mosquera, Funza y Madrid. Bogotá sur-occidente con coordinación previa. Pago contraentrega o transferencia.</p>
+    <p class="cta-closing reveal">Del campo a tu mesa. Sin intermediarios.</p>
+    <div class="cta-buttons reveal">
+      <a href="https://wa.me/573142605033?text=Hola%21+quiero+pedir+miel+Fortuna" class="btn-whatsapp">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+        Escribirnos en WhatsApp
+      </a>
+      <a href="https://instagram.com/mielfortuna" class="btn-instagram">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
+        Seguirnos en Instagram
+      </a>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <a href="#" class="footer-logo">
+      <img src="img/logo.png" alt="Fortuna" style="height:clamp(28px,3.5vw,40px);width:auto;filter:brightness(0) invert(1);opacity:0.85;" />
+    </a>
+    <span class="footer-origin">Puente Nacional · Santander · Colombia</span>
+    <div class="footer-links">
+      <a href="#productos">Productos</a>
+      <a href="#origen">Origen</a>
+      <a href="https://wa.me/573142605033">WhatsApp</a>
+      <a href="https://instagram.com/mielfortuna">Instagram</a>
+    </div>
+  </footer>
+
+  <!-- CARRITO FLOTANTE -->
+  <div class="cart-bar" id="cart-bar">
+    <div class="cart-summary">
+      <span class="cart-icon">🛒</span>
+      <span class="cart-text" id="cart-text">Tu pedido</span>
+      <span class="cart-total" id="cart-total">$0</span>
+    </div>
+    <div class="cart-actions">
+      <button class="btn-cart-clear" onclick="clearCart()">Limpiar</button>
+      <button class="btn-cart-order" onclick="openModal()">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+        Confirmar pedido
+      </button>
+    </div>
+  </div>
+
+  <!-- MODAL DE PEDIDO -->
+  <div class="modal-overlay" id="modal-overlay">
+    <div class="modal" role="dialog" aria-modal="true" aria-labelledby="modal-title">
+      <h2 class="modal-title" id="modal-title">Confirmar pedido</h2>
+      <p class="modal-subtitle">Completa tus datos y te enviamos el resumen por WhatsApp.</p>
+
+      <div class="modal-resumen" id="modal-resumen"></div>
+
+      <div class="form-group">
+        <label class="form-label" for="input-nombre">Tu nombre</label>
+        <input class="form-input" type="text" id="input-nombre" placeholder="Ej: Ana Rodríguez" autocomplete="given-name" />
+      </div>
+      <div class="form-group">
+        <label class="form-label" for="input-ciudad">Barrio o ciudad de entrega</label>
+        <input class="form-input" type="text" id="input-ciudad" placeholder="Ej: Mosquera, Funza, Madrid, Bogotá..." autocomplete="address-level2" />
+      </div>
+
+      <label class="form-label">Método de pago</label>
+      <div class="form-pago">
+        <label class="pago-opt">
+          <input type="radio" name="pago" value="Nequi" checked /> Nequi
+        </label>
+        <label class="pago-opt">
+          <input type="radio" name="pago" value="Daviplata" /> Daviplata
+        </label>
+        <label class="pago-opt">
+          <input type="radio" name="pago" value="Contraentrega" /> Contraentrega
+        </label>
+        <label class="pago-opt">
+          <input type="radio" name="pago" value="Transferencia" /> Transferencia
+        </label>
+      </div>
+
+      <div class="modal-actions">
+        <button class="btn-modal-send" onclick="sendOrder()">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+          Enviar pedido por WhatsApp
+        </button>
+        <button class="btn-modal-cancel" onclick="closeModal()">Cancelar</button>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // ── NÚMERO DE WHATSAPP — reemplazar con número real ──
+    const WA_NUMBER = '573142605033';
+
+    // ── PRODUCTOS ──
+    const PRODUCTS = {
+      grande:  { name: 'Frasco Familiar 600g', price: 35000 },
+      pequeno: { name: 'Frasco Personal',      price: 20000 }
+    };
+
+    const cart = { grande: 0, pequeno: 0 };
+
+    function fmt(n) {
+      return '$' + n.toLocaleString('es-CO');
+    }
+
+    function changeQty(product, delta) {
+      cart[product] = Math.max(0, cart[product] + delta);
+      document.getElementById('qty-' + product).textContent = cart[product];
+      updateCart();
+    }
+
+    function updateCart() {
+      const total = cart.grande * PRODUCTS.grande.price + cart.pequeno * PRODUCTS.pequeno.price;
+      const items = [];
+      if (cart.grande > 0)  items.push(cart.grande  + 'x ' + PRODUCTS.grande.name);
+      if (cart.pequeno > 0) items.push(cart.pequeno + 'x ' + PRODUCTS.pequeno.name);
+
+      const bar = document.getElementById('cart-bar');
+      if (total > 0) {
+        bar.classList.add('visible');
+        document.getElementById('cart-text').textContent = items.join(' · ');
+        document.getElementById('cart-total').textContent = fmt(total);
+      } else {
+        bar.classList.remove('visible');
+      }
+    }
+
+    function clearCart() {
+      cart.grande = 0; cart.pequeno = 0;
+      document.getElementById('qty-grande').textContent  = '0';
+      document.getElementById('qty-pequeno').textContent = '0';
+      updateCart();
+    }
+
+    // ── MODAL ──
+    function openModal() {
+      const total = cart.grande * PRODUCTS.grande.price + cart.pequeno * PRODUCTS.pequeno.price;
+      if (total === 0) return;
+
+      const resumenEl = document.getElementById('modal-resumen');
+      resumenEl.textContent = '';
+
+      const titulo = document.createElement('strong');
+      titulo.textContent = 'Tu pedido:';
+      resumenEl.appendChild(titulo);
+      resumenEl.appendChild(document.createElement('br'));
+
+      if (cart.grande > 0) {
+        const linea = document.createTextNode(cart.grande + 'x ' + PRODUCTS.grande.name + ' — ' + fmt(cart.grande * PRODUCTS.grande.price));
+        resumenEl.appendChild(linea);
+        resumenEl.appendChild(document.createElement('br'));
+      }
+      if (cart.pequeno > 0) {
+        const linea = document.createTextNode(cart.pequeno + 'x ' + PRODUCTS.pequeno.name + ' — ' + fmt(cart.pequeno * PRODUCTS.pequeno.price));
+        resumenEl.appendChild(linea);
+        resumenEl.appendChild(document.createElement('br'));
+      }
+
+      resumenEl.appendChild(document.createElement('br'));
+      const totalEl = document.createElement('strong');
+      totalEl.textContent = 'Total: ' + fmt(total);
+      resumenEl.appendChild(totalEl);
+
+      document.getElementById('modal-overlay').classList.add('open');
+      document.getElementById('input-nombre').focus();
+    }
+
+    function closeModal() {
+      document.getElementById('modal-overlay').classList.remove('open');
+    }
+
+    document.getElementById('modal-overlay').addEventListener('click', function(e) {
+      if (e.target === this) closeModal();
+    });
+
+    function sendOrder() {
+      const nombre = document.getElementById('input-nombre').value.trim();
+      const ciudad = document.getElementById('input-ciudad').value.trim();
+      const pago   = document.querySelector('input[name="pago"]:checked').value;
+
+      // Validación
+      let valid = true;
+      ['input-nombre', 'input-ciudad'].forEach(id => {
+        const el = document.getElementById(id);
+        if (!el.value.trim()) { el.classList.add('error'); valid = false; }
+        else el.classList.remove('error');
+      });
+      if (!valid) return;
+
+      const total = cart.grande * PRODUCTS.grande.price + cart.pequeno * PRODUCTS.pequeno.price;
+      let lines = ['Hola! Quiero hacer un pedido de Fortuna 🍯', ''];
+      if (cart.grande > 0)  lines.push(cart.grande  + 'x Frasco Familiar 600g — ' + fmt(cart.grande  * PRODUCTS.grande.price));
+      if (cart.pequeno > 0) lines.push(cart.pequeno + 'x Frasco Personal — '      + fmt(cart.pequeno * PRODUCTS.pequeno.price));
+      lines.push('');
+      lines.push('Total: ' + fmt(total));
+      lines.push('Entrega en: ' + ciudad);
+      lines.push('Pago: ' + pago);
+      if (nombre) lines.push('Nombre: ' + nombre);
+
+      const msg = encodeURIComponent(lines.join('\n'));
+      window.open('https://wa.me/' + WA_NUMBER + '?text=' + msg, '_blank');
+      closeModal();
+    }
+
+    // ── NAV HAMBURGER ──
+    const hamburger = document.getElementById('hamburger');
+    const navMobile = document.getElementById('nav-mobile');
+
+    hamburger.addEventListener('click', () => {
+      const open = navMobile.classList.toggle('open');
+      hamburger.classList.toggle('open', open);
+      hamburger.setAttribute('aria-expanded', open);
+    });
+
+    document.querySelectorAll('.nav-mobile-link').forEach(link => {
+      link.addEventListener('click', () => {
+        navMobile.classList.remove('open');
+        hamburger.classList.remove('open');
+        hamburger.setAttribute('aria-expanded', false);
+      });
+    });
+
+    // ── NAV SCROLL + ACTIVE ──
+    const navbar = document.getElementById('navbar');
+    const sections = document.querySelectorAll('section[id]');
+    const navLinks = document.querySelectorAll('.nav-links a[data-section]');
+
+    window.addEventListener('scroll', () => {
+      navbar.classList.toggle('scrolled', window.scrollY > 60);
+
+      let current = '';
+      sections.forEach(s => {
+        if (window.scrollY >= s.offsetTop - 120) current = s.id;
+      });
+      navLinks.forEach(a => {
+        a.classList.toggle('active', a.dataset.section === current);
+      });
+    }, { passive: true });
+
+    // ── ANIMACIONES DE SCROLL ──
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+    }, { threshold: 0.12 });
+
+    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+    // ── CONTADOR ANIMADO ──
+    const counterObserver = new IntersectionObserver(entries => {
+      entries.forEach(e => {
+        if (!e.isIntersecting) return;
+        const el = e.target;
+        const target = parseInt(el.dataset.count);
+        let current = 0;
+        const step = Math.ceil(target / 20);
+        const timer = setInterval(() => {
+          current = Math.min(current + step, target);
+          el.textContent = current;
+          if (current >= target) clearInterval(timer);
+        }, 60);
+        counterObserver.unobserve(el);
+      });
+    }, { threshold: 0.5 });
+
+    document.querySelectorAll('[data-count]').forEach(el => counterObserver.observe(el));
+
+    // ── LIGHTBOX ──
+    const lightbox    = document.getElementById('lightbox');
+    const lightboxImg = document.getElementById('lightbox-img');
+
+    document.querySelectorAll('.gallery-item').forEach(item => {
+      item.addEventListener('click', () => {
+        const img = item.querySelector('img');
+        if (img) {
+          lightboxImg.src = img.src;
+          lightboxImg.alt = img.alt;
+          lightbox.classList.add('open');
+        }
+        // Si no hay imagen real, no abre el lightbox
+      });
+    });
+
+    document.getElementById('lightbox-close').addEventListener('click', () => {
+      lightbox.classList.remove('open');
+    });
+    lightbox.addEventListener('click', e => {
+      if (e.target === lightbox) lightbox.classList.remove('open');
+    });
+    document.addEventListener('keydown', e => {
+      if (e.key === 'Escape') lightbox.classList.remove('open');
+    });
+  </script>
+</body>
+</html>
