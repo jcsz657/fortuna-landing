@@ -22,7 +22,7 @@
 
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet" />
 
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -423,6 +423,34 @@
     @keyframes bounce {
       0%, 100% { transform: translateX(-50%) translateY(0); }
       50% { transform: translateX(-50%) translateY(6px); }
+    }
+
+    /* ── MARCA DISPLAY ── */
+    .brand-display {
+      padding: 5rem 2rem 4.5rem;
+      background: var(--cream);
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 1rem;
+    }
+    .brand-display-name {
+      font-family: 'Cinzel', serif;
+      font-size: clamp(4rem, 12vw, 10rem);
+      font-weight: 400;
+      letter-spacing: 0.25em;
+      color: var(--brown);
+      line-height: 1;
+      text-transform: uppercase;
+    }
+    .brand-display-sub {
+      font-family: 'DM Sans', sans-serif;
+      font-size: clamp(0.7rem, 1vw, 0.85rem);
+      letter-spacing: 0.35em;
+      text-transform: uppercase;
+      color: var(--muted);
+      font-weight: 300;
     }
 
     /* ── BANDA DE DATOS ── */
@@ -1826,6 +1854,12 @@
       </div>
     </div>
   </section>
+
+  <!-- MARCA DISPLAY -->
+  <div class="brand-display">
+    <h2 class="brand-display-name reveal">Fortuna</h2>
+    <span class="brand-display-sub reveal reveal-delay-1">miel del campo · desde 2021</span>
+  </div>
 
   <!-- BANDA DE DATOS -->
   <div class="band">
