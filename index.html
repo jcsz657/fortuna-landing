@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Fortuna — Miel Artesanal de Puente Nacional, Santander</title>
-  <meta name="description" content="Miel artesanal multifloral de Puente Nacional, Santander. Sin procesar, sin mezclas. Del panal a tu mesa. Domicilio en Mosquera, Funza y Madrid." />
+  <meta name="description" content="Miel artesanal multifloral de Puente Nacional, Santander. Sin procesar, sin mezclas. Del panal a tu mesa. Domicilio en Mosquera, Funza, Madrid, Puente Nacional y Barbosa." />
 
   <!-- OG TAGS — reemplazar og:image con URL de foto real cuando esté disponible -->
   <meta property="og:type" content="website" />
@@ -1093,6 +1093,32 @@
     }
     .form-input:focus { border-color: var(--amber); }
     .form-input.error { border-color: #c0392b; }
+    .form-select {
+      width: 100%;
+      padding: 0.75rem 1rem;
+      border: 1px solid rgba(68, 40, 26, 0.15);
+      background: var(--white);
+      font-family: 'DM Sans', sans-serif;
+      font-size: 16px;
+      color: var(--brown);
+      outline: none;
+      transition: border-color 0.2s;
+      appearance: none;
+      -webkit-appearance: none;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%237A6550' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");
+      background-repeat: no-repeat;
+      background-position: right 1rem center;
+      cursor: pointer;
+    }
+    .form-select:focus { border-color: var(--amber); }
+    .form-select.error { border-color: #c0392b; }
+    .shipping-hint {
+      font-size: 0.78rem;
+      color: var(--amber);
+      margin-top: 0.35rem;
+      font-weight: 500;
+      min-height: 1.2em;
+    }
 
     .form-pago {
       display: grid;
@@ -1841,7 +1867,7 @@
         <span class="step-number">04</span>
         <span class="step-icon">📦</span>
         <h3 class="step-title">A tu puerta</h3>
-        <p class="step-desc">Envasado a mano. Domicilio en Mosquera, Funza y Madrid. Pedido por WhatsApp, entrega en 24–48 horas.</p>
+        <p class="step-desc">Envasado a mano. Domicilio en Mosquera, Funza, Madrid, Puente Nacional y Barbosa. Pedido por WhatsApp, entrega en 24–48 horas.</p>
       </div>
     </div>
   </section>
@@ -1998,7 +2024,7 @@
           Transferencia
         </div>
       </div>
-      <p class="pagos-nota">Pago contraentrega disponible en Mosquera, Funza y Madrid. Transferencia o Nequi para pedidos fuera de la zona.</p>
+      <p class="pagos-nota">Contraentrega disponible en Mosquera, Funza, Madrid, Puente Nacional y Barbosa. Transferencia o Nequi para otras zonas.</p>
     </div>
   </div>
 
@@ -2007,7 +2033,7 @@
     <img src="img/logo_transparent.png" alt="Fortuna" class="cta-logo reveal" />
     <span class="cta-eyebrow reveal">Pide tu frasco hoy</span>
     <h2 class="cta-title reveal">La <em>mejor miel</em><br>que has probado,<br>o te devolvemos tu plata.</h2>
-    <p class="cta-desc reveal">Domicilio en Mosquera, Funza y Madrid. Bogotá sur-occidente con coordinación previa. Pago contraentrega o transferencia.</p>
+    <p class="cta-desc reveal">Domicilio en Mosquera, Funza, Madrid, Puente Nacional y Barbosa. Contraentrega o transferencia. Envío gratis desde $100.000.</p>
     <p class="cta-closing reveal">Del campo a tu mesa. Sin intermediarios.</p>
     <div class="cta-buttons reveal">
       <a href="https://wa.me/573142605033?text=Hola%21+quiero+pedir+miel+Fortuna" class="btn-whatsapp">
@@ -2111,8 +2137,21 @@
         <input class="form-input" type="text" id="input-nombre" placeholder="Ej: Ana Rodríguez" autocomplete="given-name" />
       </div>
       <div class="form-group">
-        <label class="form-label" for="input-ciudad">Barrio o ciudad de entrega</label>
-        <input class="form-input" type="text" id="input-ciudad" placeholder="Ej: Mosquera, Funza, Madrid, Bogotá..." autocomplete="address-level2" />
+        <label class="form-label" for="input-zona">Zona de entrega</label>
+        <select class="form-select" id="input-zona" onchange="updateShippingHint()">
+          <option value="">— Selecciona tu zona —</option>
+          <option value="Mosquera">Mosquera</option>
+          <option value="Funza">Funza</option>
+          <option value="Madrid">Madrid</option>
+          <option value="Puente Nacional">Puente Nacional</option>
+          <option value="Vereda cercana (Puente Nacional)">Vereda cercana (Puente Nacional)</option>
+          <option value="Barbosa">Barbosa</option>
+        </select>
+        <div class="shipping-hint" id="shipping-hint"></div>
+      </div>
+      <div class="form-group">
+        <label class="form-label" for="input-direccion">Barrio / dirección</label>
+        <input class="form-input" type="text" id="input-direccion" placeholder="Ej: Barrio La Florida, Cra 5 #12-30..." autocomplete="street-address" />
       </div>
 
       <label class="form-label">Método de pago</label>
@@ -2296,6 +2335,7 @@
 
       document.getElementById('modal-overlay').classList.add('open');
       document.getElementById('input-nombre').focus();
+      updateShippingHint();
     }
 
     function closeModal() {
@@ -2306,29 +2346,72 @@
       if (e.target === this) closeModal();
     });
 
+    // ── TARIFAS DE DOMICILIO ──
+    const SHIPPING = {
+      'Mosquera':                           5000,
+      'Funza':                              5000,
+      'Madrid':                             5000,
+      'Puente Nacional':                    5000,
+      'Vereda cercana (Puente Nacional)':   8000,
+      'Barbosa':                           10000,
+    };
+    const FREE_SHIPPING_MIN = 100000;
+
+    function getShippingCost(zona, total) {
+      if (total >= FREE_SHIPPING_MIN) return 0;
+      return SHIPPING[zona] || 5000;
+    }
+
+    function updateShippingHint() {
+      const zona  = document.getElementById('input-zona').value;
+      const hint  = document.getElementById('shipping-hint');
+      const total = cart.grande * PRODUCTS.grande.price + cart.pequeno * PRODUCTS.pequeno.price;
+      if (!zona) { hint.textContent = ''; return; }
+      const costo = getShippingCost(zona, total);
+      hint.textContent = costo === 0
+        ? '✅ Envío gratis aplicado'
+        : 'Domicilio: ' + fmt(costo);
+    }
+
     function sendOrder() {
-      const nombre = document.getElementById('input-nombre').value.trim();
-      const ciudad = document.getElementById('input-ciudad').value.trim();
-      const pago   = document.querySelector('input[name="pago"]:checked').value;
+      const nombre    = document.getElementById('input-nombre').value.trim();
+      const zona      = document.getElementById('input-zona').value;
+      const direccion = document.getElementById('input-direccion').value.trim();
+      const pago      = document.querySelector('input[name="pago"]:checked').value;
 
       // Validación
       let valid = true;
-      ['input-nombre', 'input-ciudad'].forEach(id => {
-        const el = document.getElementById(id);
-        if (!el.value.trim()) { el.classList.add('error'); valid = false; }
-        else el.classList.remove('error');
-      });
+      if (!nombre) { document.getElementById('input-nombre').classList.add('error'); valid = false; }
+      else document.getElementById('input-nombre').classList.remove('error');
+      if (!zona)   { document.getElementById('input-zona').classList.add('error');   valid = false; }
+      else document.getElementById('input-zona').classList.remove('error');
       if (!valid) return;
 
-      const total = cart.grande * PRODUCTS.grande.price + cart.pequeno * PRODUCTS.pequeno.price;
-      let lines = ['Hola! Quiero hacer un pedido de Fortuna 🍯', ''];
-      if (cart.grande > 0)  lines.push(cart.grande  + 'x Frasco Familiar 600g — ' + fmt(cart.grande  * PRODUCTS.grande.price));
-      if (cart.pequeno > 0) lines.push(cart.pequeno + 'x Frasco Personal — '      + fmt(cart.pequeno * PRODUCTS.pequeno.price));
+      const total    = cart.grande * PRODUCTS.grande.price + cart.pequeno * PRODUCTS.pequeno.price;
+      const envio    = getShippingCost(zona, total);
+      const grandTotal = total + envio;
+
+      // ── FORMATO F5.6 ──
+      const sep  = '· · · · · · · · · · · · · ·';
+      let lines  = ['*Fortuna* · Pedido 🍯', ''];
+
+      if (cart.grande  > 0) lines.push(cart.grande  + ' × Familiar 600g — ' + fmt(cart.grande  * PRODUCTS.grande.price));
+      if (cart.pequeno > 0) lines.push(cart.pequeno + ' × Personal 250g — ' + fmt(cart.pequeno * PRODUCTS.pequeno.price));
+
+      lines.push(sep);
+
+      if (envio === 0) {
+        lines.push('                  *' + fmt(total) + '*');
+        lines.push('          _envío gratis_ ✅');
+      } else {
+        lines.push('  Domicilio · ' + fmt(envio));
+        lines.push(sep);
+        lines.push('                  *' + fmt(grandTotal) + '*');
+      }
+
       lines.push('');
-      lines.push('Total: ' + fmt(total));
-      lines.push('Entrega en: ' + ciudad);
-      lines.push('Pago: ' + pago);
-      if (nombre) lines.push('Nombre: ' + nombre);
+      lines.push(nombre + ' · ' + zona + ' · ' + pago);
+      if (direccion) lines.push('📍 ' + direccion);
 
       const msg = encodeURIComponent(lines.join('\n'));
       window.open('https://wa.me/' + WA_NUMBER + '?text=' + msg, '_blank');
