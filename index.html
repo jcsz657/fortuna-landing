@@ -78,51 +78,10 @@
     .reveal-delay-3 { transition-delay: 0.3s; }
     .reveal-delay-4 { transition-delay: 0.4s; }
 
-    /* ── TICKER ── */
-    :root { --ticker-h: 34px; }
-    .ticker-bar {
-      position: fixed;
-      top: 0; left: 0; right: 0;
-      height: var(--ticker-h);
-      background: var(--brown);
-      z-index: 101;
-      overflow: hidden;
-      display: flex;
-      align-items: center;
-    }
-    .ticker-track {
-      display: flex;
-      white-space: nowrap;
-      animation: ticker-scroll 32s linear infinite;
-      will-change: transform;
-    }
-    .ticker-bar:hover .ticker-track { animation-play-state: paused; }
-    @keyframes ticker-scroll {
-      0%   { transform: translateX(0); }
-      100% { transform: translateX(-50%); }
-    }
-    .ticker-item {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.6rem;
-      padding: 0 2.5rem;
-      font-family: 'DM Sans', sans-serif;
-      font-size: 0.72rem;
-      letter-spacing: 0.18em;
-      text-transform: uppercase;
-      color: rgba(245,240,232,0.82);
-    }
-    .ticker-sep {
-      color: var(--amber);
-      font-size: 0.6rem;
-      opacity: 0.7;
-      flex-shrink: 0;
-    }
-
     /* ── NAV ── */
     nav {
       position: fixed;
-      top: var(--ticker-h); left: 0; right: 0;
+      top: 0; left: 0; right: 0;
       z-index: 100;
       display: flex;
       justify-content: space-between;
@@ -252,7 +211,7 @@
     .nav-mobile {
       display: none;
       position: fixed;
-      top: calc(var(--ticker-h) + 124px); left: 0; right: 0;
+      top: 124px; left: 0; right: 0;
       background: rgba(245, 240, 232, 0.98);
       backdrop-filter: blur(12px);
       -webkit-backdrop-filter: blur(12px);
@@ -262,7 +221,7 @@
       gap: 1.25rem;
       z-index: 99;
     }
-    nav.scrolled ~ .nav-mobile { top: calc(var(--ticker-h) + 72px); }
+    nav.scrolled ~ .nav-mobile { top: 72px; }
     .nav-mobile.open { display: flex; }
     .nav-mobile a {
       font-size: 0.85rem;
@@ -279,14 +238,14 @@
     }
 
     /* ── SCROLL OFFSET ── */
-    section[id] { scroll-margin-top: calc(var(--ticker-h) + 80px); }
+    section[id] { scroll-margin-top: 80px; }
 
     /* ── HERO ── */
     .hero {
       min-height: 88vh;
       display: grid;
       grid-template-columns: 1fr 1fr;
-      padding-top: calc(10rem + var(--ticker-h));
+      padding-top: 10rem;
       opacity: 0;
       animation: heroFade 1s cubic-bezier(0.22,1,0.36,1) 0.2s forwards;
       background: radial-gradient(ellipse 55% 70% at 100% 50%, rgba(200,134,10,0.08) 0%, transparent 65%);
@@ -1690,8 +1649,8 @@
     @media (max-width: 900px) {
       nav { padding: 0.75rem 1.25rem; min-height: 80px; }
       nav.scrolled { min-height: 64px; padding: 0.5rem 1.25rem; }
-      .nav-mobile { top: calc(var(--ticker-h) + 80px); }
-      nav.scrolled ~ .nav-mobile { top: calc(var(--ticker-h) + 64px); }
+      .nav-mobile { top: 80px; }
+      nav.scrolled ~ .nav-mobile { top: 64px; }
       .nav-links { display: none; }
       .nav-hamburger { display: flex; }
 
@@ -1774,30 +1733,6 @@
   </style>
 </head>
 <body>
-
-  <!-- TICKER -->
-  <div class="ticker-bar" aria-hidden="true">
-    <div class="ticker-track">
-      <!-- Bloque A -->
-      <span class="ticker-item">🚚 Envío gratis desde $100.000</span>
-      <span class="ticker-sep">✦</span>
-      <span class="ticker-item">📍 Mosquera · Funza · Madrid · Puente Nacional · Barbosa</span>
-      <span class="ticker-sep">✦</span>
-      <span class="ticker-item">🍯 Miel sin procesar — del panal a tu mesa</span>
-      <span class="ticker-sep">✦</span>
-      <span class="ticker-item">📦 Pedidos por WhatsApp · Entrega 24–48 horas</span>
-      <span class="ticker-sep">✦</span>
-      <!-- Bloque B (copia exacta para el loop continuo) -->
-      <span class="ticker-item">🚚 Envío gratis desde $100.000</span>
-      <span class="ticker-sep">✦</span>
-      <span class="ticker-item">📍 Mosquera · Funza · Madrid · Puente Nacional · Barbosa</span>
-      <span class="ticker-sep">✦</span>
-      <span class="ticker-item">🍯 Miel sin procesar — del panal a tu mesa</span>
-      <span class="ticker-sep">✦</span>
-      <span class="ticker-item">📦 Pedidos por WhatsApp · Entrega 24–48 horas</span>
-      <span class="ticker-sep">✦</span>
-    </div>
-  </div>
 
   <!-- NAV -->
   <nav id="navbar">
@@ -2496,8 +2431,7 @@
     const navMobile = document.getElementById('nav-mobile');
 
     hamburger.addEventListener('click', () => {
-      const tickerH = document.querySelector('.ticker-bar').offsetHeight;
-      navMobile.style.top = (tickerH + navbar.offsetHeight) + 'px';
+      navMobile.style.top = navbar.offsetHeight + 'px';
       const open = navMobile.classList.toggle('open');
       hamburger.classList.toggle('open', open);
       hamburger.setAttribute('aria-expanded', open);
@@ -2520,9 +2454,8 @@
       const scrolled = window.scrollY > 60;
       navbar.classList.toggle('scrolled', scrolled);
 
-      // Actualizar top del nav-mobile según altura actual del ticker + nav
-      const tickerH = document.querySelector('.ticker-bar').offsetHeight;
-      navMobile.style.top = (tickerH + navbar.offsetHeight) + 'px';
+      // Actualizar top del nav-mobile según altura actual del nav
+      navMobile.style.top = navbar.offsetHeight + 'px';
 
       // Cerrar menú mobile si el usuario hace scroll
       if (navMobile.classList.contains('open')) {
