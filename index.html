@@ -211,15 +211,17 @@
     .nav-mobile {
       display: none;
       position: fixed;
-      top: 56px; left: 0; right: 0;
-      background: rgba(245, 240, 232, 0.97);
-      backdrop-filter: blur(8px);
+      top: 124px; left: 0; right: 0;
+      background: rgba(245, 240, 232, 0.98);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
       border-bottom: 1px solid rgba(44,26,14,0.08);
       padding: 1.5rem 2rem;
       flex-direction: column;
       gap: 1.25rem;
       z-index: 99;
     }
+    nav.scrolled ~ .nav-mobile { top: 72px; }
     .nav-mobile.open { display: flex; }
     .nav-mobile a {
       font-size: 0.85rem;
@@ -236,7 +238,8 @@
     }
 
     /* ── SCROLL OFFSET ── */
-    section[id] { scroll-margin-top: 72px; }
+    section[id] { scroll-margin-top: 80px; }
+    @media (max-width: 900px) { section[id] { scroll-margin-top: 80px; } }
 
     /* ── HERO ── */
     .hero {
@@ -683,18 +686,20 @@
       gap: 0.4rem;
     }
     .qty-btn {
-      width: 26px; height: 26px;
+      width: 36px; height: 36px;
       display: flex;
       align-items: center;
       justify-content: center;
       background: none;
       border: 1px solid rgba(44, 26, 14, 0.2);
       color: var(--brown);
-      font-size: 0.95rem;
+      font-size: 1rem;
       cursor: pointer;
       line-height: 1;
       font-family: 'DM Sans', sans-serif;
       transition: background 0.2s ease-out, color 0.2s ease-out, border-color 0.2s ease-out;
+      touch-action: manipulation;
+      -webkit-tap-highlight-color: transparent;
     }
     .qty-btn:hover { background: var(--amber); color: white; border-color: var(--amber); }
     .qty-count {
@@ -712,6 +717,55 @@
       font-weight: 600;
       color: var(--amber);
     }
+
+    /* ── BARRA DE ENVÍO GRATIS ── */
+    .cart-shipping {
+      padding: 0.85rem 1.75rem;
+      border-bottom: 1px solid rgba(245,240,232,0.08);
+      flex-shrink: 0;
+    }
+    .cart-shipping-text {
+      font-size: 0.8rem;
+      color: rgba(245,240,232,0.7);
+      margin-bottom: 0.6rem;
+      line-height: 1.4;
+    }
+    .cart-shipping-text strong { color: var(--amber); }
+    .cart-shipping-track {
+      position: relative;
+      height: 4px;
+      background: rgba(245,240,232,0.1);
+      border-radius: 2px;
+      overflow: visible;
+    }
+    .cart-shipping-fill {
+      height: 100%;
+      background: linear-gradient(90deg, var(--amber), #E09A10);
+      border-radius: 2px;
+      transition: width 0.4s cubic-bezier(0.22,1,0.36,1);
+      width: 0%;
+    }
+    .cart-shipping-truck {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      transition: left 0.4s cubic-bezier(0.22,1,0.36,1);
+      left: 0%;
+      color: var(--amber);
+      display: flex;
+      align-items: center;
+    }
+    .cart-shipping-truck svg { filter: drop-shadow(0 0 3px rgba(200,134,10,0.5)); }
+    .cart-shipping-reached {
+      display: none;
+      align-items: center;
+      gap: 0.4rem;
+      font-size: 0.8rem;
+      color: #4CAF50;
+      font-weight: 500;
+    }
+    .cart-shipping-reached.visible { display: flex; }
+    .cart-shipping-normal.hidden { display: none; }
 
     /* ── CARRITO FLOTANTE ── */
     /* ── CART OVERLAY (fondo oscuro) ── */
@@ -824,8 +878,8 @@
       flex-shrink: 0;
     }
     .btn-qty-panel {
-      width: 28px;
-      height: 28px;
+      width: 36px;
+      height: 36px;
       border-radius: 50%;
       border: 1px solid rgba(245,240,232,0.2);
       background: rgba(245,240,232,0.06);
@@ -837,6 +891,8 @@
       align-items: center;
       justify-content: center;
       transition: background 0.2s, border-color 0.2s;
+      touch-action: manipulation;
+      -webkit-tap-highlight-color: transparent;
     }
     .btn-qty-panel:hover { background: rgba(245,240,232,0.14); border-color: rgba(245,240,232,0.4); }
     .cart-item-count {
@@ -1129,16 +1185,21 @@
     }
     .lightbox-close {
       position: absolute;
-      top: 1.5rem; right: 1.5rem;
-      background: none;
-      border: none;
-      color: rgba(245,240,232,0.7);
-      font-size: 1.5rem;
+      top: 1rem; right: 1rem;
+      background: rgba(44,26,14,0.5);
+      border: 1px solid rgba(245,240,232,0.2);
+      color: rgba(245,240,232,0.9);
+      font-size: 1.2rem;
       cursor: pointer;
       font-family: 'DM Sans', sans-serif;
-      transition: color 0.2s;
+      transition: color 0.2s, background 0.2s;
+      width: 44px; height: 44px;
+      display: flex; align-items: center; justify-content: center;
+      border-radius: 50%;
+      touch-action: manipulation;
+      -webkit-tap-highlight-color: transparent;
     }
-    .lightbox-close:hover { color: var(--cream); }
+    .lightbox-close:hover { color: var(--cream); background: rgba(44,26,14,0.8); }
 
     /* ── ORIGEN ── */
     .origin {
@@ -1336,36 +1397,6 @@
       line-height: 1.6;
     }
 
-    /* ── TESTIMONIOS ── */
-    .testimonials { padding: 5rem 6rem; background: linear-gradient(180deg, #E8DCC8 0%, #DFD0B4 100%); }
-    .testimonials-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 2px;
-      margin-top: 4rem;
-    }
-    .testimonial-card { background: #FFFDF8; padding: 2.5rem; border-left: 3px solid var(--amber); box-shadow: 0 2px 16px rgba(44,26,14,0.07); }
-    .testimonial-stars {
-      color: var(--amber);
-      font-size: 0.85rem;
-      letter-spacing: 0.2em;
-      margin-bottom: 1.25rem;
-    }
-    .testimonial-text {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: clamp(1rem, 1.2vw, 1.2rem);
-      font-weight: 400;
-      font-style: italic;
-      color: var(--brown);
-      line-height: 1.6;
-      margin-bottom: 1.5rem;
-    }
-    .testimonial-author {
-      font-size: 0.85rem;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      color: var(--muted);
-    }
 
     /* ── CTA FINAL ── */
     .cta-section {
@@ -1532,7 +1563,10 @@
 
     /* ── RESPONSIVE — tablet / mobile ── */
     @media (max-width: 900px) {
-      nav { padding: 1rem 1.5rem; }
+      nav { padding: 0.75rem 1.25rem; min-height: 80px; }
+      nav.scrolled { min-height: 64px; padding: 0.5rem 1.25rem; }
+      .nav-mobile { top: 80px; }
+      nav.scrolled ~ .nav-mobile { top: 64px; }
       .nav-links { display: none; }
       .nav-hamburger { display: flex; }
 
@@ -1557,7 +1591,8 @@
       .band-item:nth-child(odd) { border-right: 1px solid rgba(245,240,232,0.08); }
 
       .section { padding: 4rem 1.5rem; }
-      .products-grid { grid-template-columns: 1fr 1fr; }
+      .products-grid { grid-template-columns: 1fr; }
+      .product-card { max-width: 480px; margin: 0 auto; width: 100%; }
 
       .gallery { padding: 4rem 1.5rem; }
       .gallery-grid { grid-template-columns: repeat(2, 1fr); gap: 0.75rem; }
@@ -1569,8 +1604,6 @@
       .pagos { padding: 3rem 1.5rem; }
       .pagos-inner { flex-direction: column; align-items: flex-start; }
 
-      .testimonials { padding: 4rem 1.5rem; }
-      .testimonials-grid { grid-template-columns: 1fr; }
 
       .cta-section { padding: 5rem 1.5rem; }
 
@@ -1600,8 +1633,6 @@
       .pagos { padding: 2.5rem 1.25rem; }
       .pagos-methods { gap: 0.5rem; }
 
-      .testimonials { padding: 3.5rem 1.25rem; }
-      .testimonials-grid { gap: 0.75rem; }
 
       .cta-section { padding: 4rem 1.25rem; gap: 1rem; }
       .cta-buttons { flex-direction: column; align-items: stretch; }
@@ -1622,7 +1653,7 @@
   <!-- NAV -->
   <nav id="navbar">
     <a href="#" class="nav-logo">
-      <img src="img/logo_new.png" alt="Fortuna Miel Artesanal" />
+      <img src="img/logo_transparent.png" alt="Fortuna Miel Artesanal" />
     </a>
     <ul class="nav-links">
       <li><a href="#origen" data-section="origen">Nosotros</a></li>
@@ -1889,30 +1920,6 @@
     </div>
   </section>
 
-  <!-- TESTIMONIOS -->
-  <section class="testimonials">
-    <div class="section-header reveal">
-      <span class="section-tag">Lo que dicen</span>
-      <h2 class="section-title">Quienes ya<br>la prueban, vuelven.</h2>
-    </div>
-    <div class="testimonials-grid">
-      <div class="testimonial-card reveal">
-        <div class="testimonial-stars">★ ★ ★ ★ ★</div>
-        <p class="testimonial-text">"Nunca había probado miel así. Tiene un sabor completamente distinto a lo del supermercado. Se nota que es real."</p>
-        <span class="testimonial-author">— Daniela M., Mosquera</span>
-      </div>
-      <div class="testimonial-card reveal reveal-delay-1">
-        <div class="testimonial-stars">★ ★ ★ ★ ★</div>
-        <p class="testimonial-text">"La pedí para regalar y terminé comprando dos para mí. La presentación es bonita y la miel es increíble."</p>
-        <span class="testimonial-author">— Carlos R., Bogotá</span>
-      </div>
-      <div class="testimonial-card reveal reveal-delay-2">
-        <div class="testimonial-stars">★ ★ ★ ★ ★</div>
-        <p class="testimonial-text">"El domicilio llegó rapidísimo y bien empacado. El sabor es suave, floral, nada empalagoso. Ya pedí el segundo."</p>
-        <span class="testimonial-author">— María P., Funza</span>
-      </div>
-    </div>
-  </section>
 
   <!-- MÉTODOS DE PAGO -->
   <div class="pagos reveal">
@@ -1942,7 +1949,7 @@
 
   <!-- CTA FINAL -->
   <section class="cta-section" id="contacto">
-    <img src="img/logo_new.png" alt="Fortuna" class="cta-logo reveal" />
+    <img src="img/logo_transparent.png" alt="Fortuna" class="cta-logo reveal" />
     <span class="cta-eyebrow reveal">Pide tu frasco hoy</span>
     <h2 class="cta-title reveal">La <em>mejor miel</em><br>que has probado,<br>o te devolvemos tu plata.</h2>
     <p class="cta-desc reveal">Domicilio en Mosquera, Funza y Madrid. Bogotá sur-occidente con coordinación previa. Pago contraentrega o transferencia.</p>
@@ -1966,7 +1973,7 @@
   <!-- FOOTER -->
   <footer>
     <a href="#" class="footer-logo">
-      <img src="img/logo_new.png" alt="Fortuna Miel Artesanal" />
+      <img src="img/logo_transparent.png" alt="Fortuna Miel Artesanal" />
     </a>
     <div class="footer-right">
       <span class="footer-origin">Puente Nacional · Santander · Colombia</span>
@@ -1991,6 +1998,25 @@
         <span class="cart-header-title">Tu pedido</span>
       </div>
       <button class="btn-cart-close" onclick="closeCart()" aria-label="Cerrar carrito">×</button>
+    </div>
+
+    <!-- BARRA ENVÍO GRATIS -->
+    <div class="cart-shipping" id="cart-shipping">
+      <div class="cart-shipping-normal" id="shipping-normal">
+        <div class="cart-shipping-text">
+          <span>Te faltan <strong id="shipping-remaining">$100.000</strong> para <strong>envío gratis</strong></span>
+        </div>
+        <div class="cart-shipping-track">
+          <div class="cart-shipping-fill" id="shipping-fill"></div>
+          <div class="cart-shipping-truck" id="shipping-truck">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="1" y="3" width="15" height="13" rx="1"/><path d="M16 8h4l3 4v5h-7V8z"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg>
+          </div>
+        </div>
+      </div>
+      <div class="cart-shipping-reached" id="shipping-reached">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><polyline points="20 6 9 17 4 12"/></svg>
+        ¡Envío gratis aplicado!
+      </div>
     </div>
 
     <div class="cart-items" id="cart-items">
@@ -2125,6 +2151,27 @@
 
       document.getElementById('cart-total').textContent = fmt(total);
 
+      // Barra de envío gratis
+      const FREE_SHIPPING = 100000;
+      const progress = Math.min(total / FREE_SHIPPING, 1);
+      const remaining = Math.max(FREE_SHIPPING - total, 0);
+      const reachedEl = document.getElementById('shipping-reached');
+      const normalEl  = document.getElementById('shipping-normal');
+      const fillEl    = document.getElementById('shipping-fill');
+      const truckEl   = document.getElementById('shipping-truck');
+      const remainEl  = document.getElementById('shipping-remaining');
+
+      if (total >= FREE_SHIPPING) {
+        reachedEl.classList.add('visible');
+        normalEl.classList.add('hidden');
+      } else {
+        reachedEl.classList.remove('visible');
+        normalEl.classList.remove('hidden');
+        if (remainEl) remainEl.textContent = fmt(remaining);
+        if (fillEl)  fillEl.style.width = (progress * 100) + '%';
+        if (truckEl) truckEl.style.left = 'calc(' + (progress * 100) + '% - 9px)';
+      }
+
       // Botón nav
       const totalItems = cart.grande + cart.pequeno;
       const btnNav = document.getElementById('btn-nav-cart');
@@ -2224,6 +2271,7 @@
     const navMobile = document.getElementById('nav-mobile');
 
     hamburger.addEventListener('click', () => {
+      navMobile.style.top = navbar.offsetHeight + 'px';
       const open = navMobile.classList.toggle('open');
       hamburger.classList.toggle('open', open);
       hamburger.setAttribute('aria-expanded', open);
@@ -2243,7 +2291,18 @@
     const navLinks = document.querySelectorAll('.nav-links a[data-section]');
 
     window.addEventListener('scroll', () => {
-      navbar.classList.toggle('scrolled', window.scrollY > 60);
+      const scrolled = window.scrollY > 60;
+      navbar.classList.toggle('scrolled', scrolled);
+
+      // Actualizar top del nav-mobile según altura actual del nav
+      navMobile.style.top = navbar.offsetHeight + 'px';
+
+      // Cerrar menú mobile si el usuario hace scroll
+      if (navMobile.classList.contains('open')) {
+        navMobile.classList.remove('open');
+        hamburger.classList.remove('open');
+        hamburger.setAttribute('aria-expanded', false);
+      }
 
       let current = '';
       sections.forEach(s => {
