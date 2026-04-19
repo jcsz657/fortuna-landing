@@ -2407,23 +2407,20 @@
       const envio    = getShippingCost(zona, total);
       const grandTotal = total + envio;
 
-      // ── FORMATO V4 ──
-      let lines = ['Hola! Quiero pedir 🍯', ''];
+      let lines = ['Hola! Quiero hacer un pedido de Fortuna 🍯', ''];
 
-      if (cart.grande  > 0) lines.push('• ' + cart.grande  + ' Familiar 600g — ' + fmt(cart.grande  * PRODUCTS.grande.price));
-      if (cart.pequeno > 0) lines.push('• ' + cart.pequeno + ' Personal 250g — ' + fmt(cart.pequeno * PRODUCTS.pequeno.price));
-
-      lines.push('─────────────────');
-
-      if (envio === 0) {
-        lines.push('*' + fmt(total) + '* · envío gratis ✅');
-      } else {
-        lines.push('*' + fmt(grandTotal) + '* (dom. ' + fmt(envio) + ')');
-      }
+      if (cart.grande  > 0) lines.push('• ' + cart.grande  + 'x Frasco Familiar 600g — ' + fmt(cart.grande  * PRODUCTS.grande.price));
+      if (cart.pequeno > 0) lines.push('• ' + cart.pequeno + 'x Frasco Personal — '       + fmt(cart.pequeno * PRODUCTS.pequeno.price));
 
       lines.push('');
-      lines.push(nombre + ' · ' + zona + (direccion ? ', ' + direccion : ''));
+      if (envio === 0) {
+        lines.push('Total: ' + fmt(total) + ' · envío gratis ✅');
+      } else {
+        lines.push('Total: ' + fmt(grandTotal) + ' (dom. ' + fmt(envio) + ')');
+      }
+      lines.push('Entrega en: ' + zona + (direccion ? ', ' + direccion : ''));
       lines.push('Pago: ' + pago);
+      if (nombre) lines.push('Nombre: ' + nombre);
 
       const msg = encodeURIComponent(lines.join('\n'));
       window.open('https://wa.me/' + WA_NUMBER + '?text=' + msg, '_blank');
