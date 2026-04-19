@@ -555,18 +555,30 @@
     }
     .product-card.featured { background: var(--light); color: var(--brown); border-color: var(--amber); border-width: 2px; box-shadow: 0 4px 24px rgba(192,120,8,0.2), 0 1px 4px rgba(68,40,26,0.08); }
 
+    .product-visual-wrap {
+      display: flex;
+      justify-content: center;
+      padding: 1.75rem 1.75rem 0.5rem;
+      background: var(--light);
+    }
     .product-visual {
-      width: 100%;
-      height: 200px;
+      width: 170px;
+      height: 170px;
+      border-radius: 50%;
       overflow: hidden;
       position: relative;
-      background-color: var(--light);
+      background-color: var(--warm);
       background-size: cover;
       background-repeat: no-repeat;
       background-position: center center;
       transition: transform 0.4s ease-out;
+      box-shadow: 0 4px 24px rgba(68,40,26,0.13), 0 0 0 6px var(--cream), 0 0 0 8px rgba(200,134,10,0.18);
+      flex-shrink: 0;
     }
-    .product-card:hover .product-visual { transform: scale(1.03); }
+    .product-card:hover .product-visual { transform: scale(1.05); }
+    .product-card.featured .product-visual {
+      box-shadow: 0 4px 28px rgba(68,40,26,0.18), 0 0 0 6px var(--cream), 0 0 0 8px rgba(200,134,10,0.45);
+    }
     .product-visual img { display: none; }
 
     .product-body {
@@ -1921,7 +1933,9 @@
     <div class="products-grid">
 
       <div class="product-card featured reveal">
-        <div class="product-visual" style="background-image: url('img/frasco_600_card.jpg');"></div>
+        <div class="product-visual-wrap">
+          <div class="product-visual" style="background-image: url('img/frasco_600_card.jpg');"></div>
+        </div>
         <div class="product-body">
           <div class="badge-temporada disponible"><span class="badge-dot"></span>Disponible</div>
           <span class="product-tag-small">Más popular · 600g</span>
@@ -1943,7 +1957,9 @@
       </div>
 
       <div class="product-card reveal reveal-delay-1">
-        <div class="product-visual" style="background-image: url('img/frasco_250_card.jpg');"></div>
+        <div class="product-visual-wrap">
+          <div class="product-visual" style="background-image: url('img/frasco_250_card.jpg');"></div>
+        </div>
         <div class="product-body">
           <div class="badge-temporada disponible"><span class="badge-dot"></span>Disponible</div>
           <span class="product-tag-small">Para regalar · 250g</span>
