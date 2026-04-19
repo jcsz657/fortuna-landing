@@ -2411,8 +2411,8 @@
       const sep  = '· · · · · · · · · · · · · ·';
       let lines  = ['*Fortuna* · Pedido 🍯', ''];
 
-      if (cart.grande  > 0) lines.push(cart.grande  + ' × Familiar 600g — ' + fmt(cart.grande  * PRODUCTS.grande.price));
-      if (cart.pequeno > 0) lines.push(cart.pequeno + ' × Personal 250g — ' + fmt(cart.pequeno * PRODUCTS.pequeno.price));
+      if (cart.grande  > 0) lines.push('• ' + cart.grande  + ' × Familiar 600g — ' + fmt(cart.grande  * PRODUCTS.grande.price));
+      if (cart.pequeno > 0) lines.push('• ' + cart.pequeno + ' × Personal 250g — ' + fmt(cart.pequeno * PRODUCTS.pequeno.price));
 
       lines.push(sep);
 
