@@ -2407,27 +2407,23 @@
       const envio    = getShippingCost(zona, total);
       const grandTotal = total + envio;
 
-      // ── FORMATO F5.6 ──
-      const sep  = '· · · · · · · · · · · · · ·';
-      let lines  = ['*Fortuna* · Pedido 🍯', ''];
+      // ── FORMATO V4 ──
+      let lines = ['Hola! Quiero pedir 🍯', ''];
 
-      if (cart.grande  > 0) lines.push('• ' + cart.grande  + ' × Familiar 600g — ' + fmt(cart.grande  * PRODUCTS.grande.price));
-      if (cart.pequeno > 0) lines.push('• ' + cart.pequeno + ' × Personal 250g — ' + fmt(cart.pequeno * PRODUCTS.pequeno.price));
+      if (cart.grande  > 0) lines.push('• ' + cart.grande  + ' Familiar 600g — ' + fmt(cart.grande  * PRODUCTS.grande.price));
+      if (cart.pequeno > 0) lines.push('• ' + cart.pequeno + ' Personal 250g — ' + fmt(cart.pequeno * PRODUCTS.pequeno.price));
 
-      lines.push(sep);
+      lines.push('─────────────────');
 
       if (envio === 0) {
-        lines.push('                  *' + fmt(total) + '*');
-        lines.push('          _envío gratis_ ✅');
+        lines.push('*' + fmt(total) + '* · envío gratis ✅');
       } else {
-        lines.push('  Domicilio · ' + fmt(envio));
-        lines.push(sep);
-        lines.push('                  *' + fmt(grandTotal) + '*');
+        lines.push('*' + fmt(grandTotal) + '* (dom. ' + fmt(envio) + ')');
       }
 
       lines.push('');
-      lines.push(nombre + ' · ' + zona + ' · ' + pago);
-      if (direccion) lines.push('📍 ' + direccion);
+      lines.push(nombre + ' · ' + zona + (direccion ? ', ' + direccion : ''));
+      lines.push('Pago: ' + pago);
 
       const msg = encodeURIComponent(lines.join('\n'));
       window.open('https://wa.me/' + WA_NUMBER + '?text=' + msg, '_blank');
